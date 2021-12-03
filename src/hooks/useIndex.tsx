@@ -16,6 +16,7 @@ export default function useIndex() {
   }, []);
 
   useEffect(() => {
+    
     api.get<MovieProps[]>(`movies/?Genre_id=${selectedGenreId}`).then(response => {
       setMovies(response.data);
     });
@@ -24,9 +25,11 @@ export default function useIndex() {
       setSelectedGenre(response.data);
     })
   }, [selectedGenreId]);
+
   function handleClickButton(id: number) {
     setSelectedGenreId(id);
   }
+
 
   return {
     selectedGenreId,

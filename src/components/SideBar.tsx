@@ -1,13 +1,18 @@
 import { Button } from '../components/Button';
 import '../styles/sidebar.scss';
-import useIndex from '../hooks/useIndex';
 
-export function SideBar() {
-  const {   
-    selectedGenreId,
-    genres,
-    handleClickButton
-  } = useIndex();
+interface Genre {
+  id: number;
+  name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
+  title: string;
+}
+interface SidebarProps {
+  genres: Genre[];
+  selectedGenreId: number;
+  handleClickButton: Function
+}
+  
+export function SideBar({genres, selectedGenreId, handleClickButton}: SidebarProps) {
  
   return (
      <nav className="sidebar">
@@ -28,3 +33,4 @@ export function SideBar() {
       </nav>
   )
 }
+
